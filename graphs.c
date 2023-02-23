@@ -53,6 +53,7 @@ int dequeue()
 }
 void BFS(int v, int n)
 {
+	visited[v]=1;
 	for(int i=0;i<n;i++)
 		if(adjacenyMatrix[v][i] && !visited[i] )
 			enqueue(i);
