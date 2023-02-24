@@ -53,22 +53,23 @@ int dequeue()
 }
 void BFS(int v, int n)
 {
+	printf("%d  ", v + 1);
+	visited[v]=1;
+	
 	for(int i=0;i<n;i++)
-		if(adjacenyMatrix[v][i] && !visited[i] )
+		if(adjacenyMatrix[v][i] && !visited[i] ){
 			enqueue(i);
+			visited[i]=1;
+		}
 	if(count>0)
-	{
-		visited[v]=1;
-		printf("%d  ", v + 1);
-		int next=dequeue();
-		BFS(next,n);
-	}
+		BFS(dequeue(),n);
 }
 
 void DFS(int v, int n)
 {
-	visited[v] = 1;
 	printf("%d  ",v+1);
+	visited[v] = 1;
+	
 	for (int i = 0; i < n; i++)
 		if (adjacenyMatrix[v][i] && !visited[i] )
 			DFS(i,n);
@@ -105,8 +106,9 @@ int main()
 			clearVisited();
 			printf("\n\n");
 			break;
+		default: return 0;
 		}
 	}
-	
-	return 0;
 }
+//test case
+// 6 1 1 2 2 2 1 2 1 1 2 1 2 1 2 2 2 1 1 1 1 2 1 2 1 1 2 2 2 1 1 
