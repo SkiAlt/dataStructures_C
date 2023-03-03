@@ -13,11 +13,10 @@ void H(int k, int a[], int m){
 		return;
 	}	
 	printf("Collision occured at address: %d\n", l);
-	int i = 0; //probe
-	while(a[l+i]!=-1)
-		i++;
-	a[l+i] = k;
-	printf("inserted key: %d at address: %d + %d\n", k, l, i);
+	while(a[l]!=-1)
+		l = (l + 1) % m;
+	a[l] = k;
+	printf("inserted key: %d at address: %d\n", k, l);
 }
 
 void displayHashTable(int a[],int m){
